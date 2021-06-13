@@ -1,0 +1,41 @@
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <title>TrueWeatherValues</title>
+    <link rel="icon" type="x-icon" href="icon.png">
+    <link rel="shortcut icon" type="x-icon" href="icon.png">
+    <meta charset="utf-8">
+</head>
+
+<body>
+	<h1 class="title">TrueWeatherValues</h1>
+    <img src="compass.png" id="maincanvas">
+    <button class="button" onclick="location.href='instructions.html';">Click here to start!</button>
+
+    <h2>What is TrueWeatherValues?</h2>
+        <p>TrueWeatherValues is an ideals compass test that is based on the weather community. It is a fork of the <a href="https://github.com/SapplyValues/SapplyValues.github.io">SapplyValues</a> and <a href="https://github.com/Pyroblocks/WeatherValues.github.io"> WeatherValues</a> Github repository. You will be presented by a statement, and then you will answer with your opinion on the statement, from <b>Strongly Agree</b> to <b>Strongly Disagree</b>, with each answer slightly affecting your scores. At the end of the quiz, your answers will be displayed on a compass.<br /><br />
+        There are <b><u><span id="numOfQuestions"></span></u></b> questions in the test.</p>
+    <h2>Legal notice</h2>
+    <p>The 8values and 9Axes project licenses grant the rights to "modify, merge, publish, distribute" the software as long as "The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software." The included notice can be found here. This project is released under the same license.<p>
+
+    <script type="application/javascript" src="questions.js"></script>
+    <script type="text/javascript">
+        document.getElementById("numOfQuestions").innerHTML = questions.length;
+
+        window.onload = function() {
+            var background = new Image();
+            background.onload = function() {
+                var c = document.createElement("canvas");
+                c.width = 1850;
+                c.height = 1300;
+                var ctx = c.getContext("2d");
+                ctx.fillStyle = "#EEEEEE"
+                ctx.fillRect(0, 0, 1850, 1300);
+                ctx.drawImage(background, 0, 0);
+
+                document.getElementById("banner").src = c.toDataURL();
+            }
+            background.src = "./compass.png";
+        }
+    </script>
+</body>

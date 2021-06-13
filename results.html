@@ -1,0 +1,54 @@
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <title>TrueWeatherValues Results</title>
+    <link rel="icon" type="x-icon" href="icon.png">
+    <link rel="shortcut icon" type="x-icon" href="icon.png">
+    <meta charset="utf-8">
+    </head>
+    
+    <body>
+    <h1>TrueWeatherValues Ideals Compass</h1>
+    <hr>
+        
+    <h1>Results</h1>
+    <canvas id="maincanvas"></canvas><img src="compass.png" id="background" hidden="true"></img></br>
+    <p style="text-align:center;margin:-2px auto">Hint: you can download this image directly. No need to screenshot!</p></br>
+    <button class="button" onclick="location.href='index.html';" style="background-color: #2196f3;">Back</button> <br>
+	
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        x_axis  = parseFloat(urlParams.get("inn"))
+        y_axis  = parseFloat(urlParams.get("wee"))
+    
+        window.onload = function() {
+            var background = document.getElementById("background");
+            var c = document.getElementById("maincanvas");
+            c.width = 1850;
+            c.height = 1600;
+            var ctx = c.getContext("2d");
+
+            ctx.fillStyle = "#EEEEEE"
+            ctx.fillRect(0, 0, 1850, 1600);
+            ctx.drawImage(background, 0, 0);
+
+            var dot = c.getContext("2d");
+            dot.beginPath();
+            dot.arc(425 + (1000 * (x_axis+10)/20), 1150 - (1000 * (y_axis + 10)/20), 25, 0, 2 * Math.PI);
+            dot.fillStyle = 'red';
+            dot.fill();
+            dot.stroke();
+
+            ctx.font="50px Montserrat"
+            ctx.textAlign="center"
+            ctx.fillStyle="#222222"
+            ctx.fillText("Simplist / Innovationalist Axis (x): " + x_axis, 925, 1375)
+            ctx.fillText("Weenie / Educationalist Axis (y): " + y_axis, 925, 1450)
+            ctx.textAlign="right"
+            ctx.font="30px Montserrat"
+            ctx.fillText("magniflcent.github.io/TrueWeatherValues", 1820, 1560)
+        }
+        </script>
+    </body>
+    
